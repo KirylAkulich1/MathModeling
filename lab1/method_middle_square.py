@@ -1,5 +1,6 @@
+from lab1.ksi_square_criteria_tests import ksi_criteria
 import time
-
+import ksi_suqare_criterea
 
 def get_middle_interval(number:int,interval_length:int)->int:
     number_str:str = str(number)
@@ -19,8 +20,19 @@ def middle_square_generator(seed:int)->int:
 
 if __name__=="__main__":
     seed_str = str(time.time()).replace('.','')[-8:]
-    seed= int(seed_str)
-    print(seed)
+    seed = int(seed_str)
+    for i in range(5):
+        seed_str = str(time.time()).replace('.','')[-8:]
+        seed = int(seed_str)
+        generated_values = []
+        generator= middle_square_generator(seed)
+        for j in range(1000):
+            generated_values.append(next(generator))
+        
+        hist =  ksi_criteria(generated_values,0,1,10)
+
+
+
 
 
 
